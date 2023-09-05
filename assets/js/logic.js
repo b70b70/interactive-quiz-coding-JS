@@ -15,6 +15,35 @@
 
     let sfx = new Audio("assets/sfx/correct.wav");
 
+    function questionClick(){
+        if(this.value !== questions[currentQuestionIndex].answer){
+            time -=15;
+
+            if(time < 0) {
+                time = 0;
+            }   
+            timerElement.textContent = time;
+
+            feedbackElement.textContent = "Wrong"
+        } else  {
+            feedbackElement.textContent = "Correct!";
+        }      
+
+        feedbackElement.setAttribute("class", "feedback");
+
+        setTimeout(function(){
+            feedbackElement.setAttribute("class", "feedback hide")
+        }, 1000);
+
+        currentQuestionIndex++;
+
+        if(currentQuestionIndex === questions.length) {
+            quizEnd()
+        } else {
+            getQuestion();
+        }
+    }
+
     function getQuestion(){
         let currentQuestion = questions[currentQuestionIndex];
         
@@ -40,9 +69,7 @@
     }
     
 
-    function questionClick(){
-
-    }
+   
 
     
     function quizEnd(){
