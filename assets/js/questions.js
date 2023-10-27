@@ -1,3 +1,5 @@
+// Defined array of questions, where each question is an object
+
 let questions = [
     {
         "title": "Which of the following DOES NOT include Common Data types",
